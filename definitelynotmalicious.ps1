@@ -19,6 +19,6 @@ $action1 = New-ScheduledTaskAction -Execute 'pwsh.exe' -Argument '-File "C:\User
 $action2 = New-ScheduledTaskAction -Execute 'pwsh.exe' -Argument 'Invoke-WebRequest https://raw.githubusercontent.com/mshapiro2025/soctest/main/startupscript?token=GHSAT0AAAAAAB7CSJAA2FHRJCBOR5PGUTPYY7U6YNA -OutFile C"\Users\setup\startupscript.ps1'
 $trigger1 = New-JobTrigger -AtStartup
 $trigger1.Delay = 'PT1M'
-$trigger2 -New-JobTrigger -AtStartup
+$trigger2 = New-JobTrigger -AtStartup
 Register-ScheduledTask -Action $action2 -Trigger $trigger2
 Register-ScheduledTask -Action $action1 -Trigger $trigger1
