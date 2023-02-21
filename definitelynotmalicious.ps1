@@ -1,6 +1,6 @@
 whoami
 hostname
-$nethost = Read-Host -Prompt "Enter the network address of your LAN (ex. 192.168.201)
+$nethost = Read-Host -Prompt "Enter the network address of your LAN (ex. 192.168.201)"
 $firstip = Read-Host -Prompt "Enter the first host ID you want to scan (ex. for 192.168.201.50, enter 50)"
 $lastip = Read-Host -Prompt "Enter the last host ID you want to scan"
 Set-NetFirewallProfile -Profile Public -Enabled False
@@ -20,5 +20,5 @@ $action2 = New-ScheduledTaskAction -Execute 'pwsh.exe' -Argument 'Invoke-WebRequ
 $trigger1 = New-JobTrigger -AtStartup
 $trigger1.Delay = 'PT1M'
 $trigger2 = New-JobTrigger -AtStartup
-Register-ScheduledTask -Action $action2 -Trigger $trigger2
-Register-ScheduledTask -Action $action1 -Trigger $trigger1
+Register-ScheduledTask -Action $action2 -Trigger $trigger2 -TaskName "task1"
+Register-ScheduledTask -Action $action1 -Trigger $trigger1 -TaskName "task2"
